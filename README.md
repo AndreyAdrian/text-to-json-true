@@ -11,7 +11,7 @@ Deployed in: https://text-to-json-true.vercel.app/
 - { a, b , c }
 - a: 'z', b: 'x', c: 'w'
 ```
-###### Gives: 
+###### Any of them give: 
 ```
 {
   "a": true,
