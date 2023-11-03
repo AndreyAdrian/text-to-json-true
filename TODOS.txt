@@ -1,0 +1,9 @@
+- improve ux, 
+		make them 2 blocks, left and right,
+		better placeholder text
+		
+- expose optional params in ui,
+		{},
+		joinwords,
+		lowercase,
+		remove diacritcs
