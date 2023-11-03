@@ -9,23 +9,25 @@ function App() {
 
     const [joinWords, setJoinWords] = useState(true);
 
+    function removeDiacritics(str: string) {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }    
+
     const processInput = (input: any) => {
 
-        // 1) Remove surrounding quotes, brackets, and braces, and then split by comma
-        const cleanedInput = input
-        .replace(/['"\[\]{}]/g, '')
-        .split(',')
-        .map((word: string) => word.trim());
+        // 1) Split by comma, remove surrounding quotes, brackets, and braces
+        const cleanedInput = input.split(/,|\r?\n/)
+            .map((part: string) => part.split(':')[0].replace(/['"\[\]{}]/g, '').trim())
+            .map((word: string) => removeDiacritics(word).toLowerCase())
+            .filter(Boolean); // lastly remove empty strings after trimming
 
-        // 2) If joinWords is true, then combine words together
-        const processedWords = joinWords ? cleanedInput.map((word: string) => word.replace(/\s+/g, '')) : cleanedInput;
 
-        // 3) Filter out empty strings
-        const validWords = processedWords.filter(Boolean);
+        // 2) If joinWords is true, then combine words together, else skip
+        const lastPass = joinWords ? cleanedInput.map((word: string) => word.replace(/\s+/g, '')) : cleanedInput;
 
-        // 4) Convert array to object with values set to true
+        // 3) Convert array to object with values set to true
         const result: { [key: string]: boolean } = {};
-        validWords.forEach((word: string) => {
+        lastPass.forEach((word: string) => {
             result[word] = true;
         });
         
