@@ -1,7 +1,7 @@
 A simple texto to json true.
 ----
 
-Deployed in: https://text-to-json-true.vercel.app/
+Deployed at: https://text-to-json-true.vercel.app/
 
 ###### Anything goes:
 ```
@@ -10,6 +10,9 @@ Deployed in: https://text-to-json-true.vercel.app/
 - [ a, b , c ]
 - { a, b , c }
 - a: 'z', b: 'x', c: 'w'
+- a
+  b
+  c
 ```
 ###### Any of them give: 
 ```
