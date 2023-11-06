@@ -7,3 +7,11 @@
 		joinwords,
 		lowercase,
 		remove diacritcs
+		
+		
+		
+- copy
+- exports
+- app.tsx naming
+- big button choppy top line
+

@@ -1,7 +1,8 @@
 "use client"
 
 import React, { useState } from 'react';
-import './App.module.css';
+import styles from './App.module.css';
+import * as placeholders from './placeholders';
 
 function App() {
     const [input, setInput] = useState('');
@@ -44,21 +45,24 @@ function App() {
     
 
     return (
-        <div className="App">
-            <div>
+        <div className={styles.app}>
+            <div className={styles.column}>
                 <textarea
-                    placeholder="Paste your text here..."
+                    className={styles.textArea}
+                    placeholder={placeholders.input}
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                 />
-                <button onClick={handleProcess}>Process</button>
+                <button className={styles.bigButton} onClick={handleProcess}>Process</button>
             </div>
-            <div>
+            <div className={styles.column}>
                 <textarea
-                    placeholder="Processed text will appear here..."
+                    className={styles.textArea}
+                    placeholder={placeholders.output}
                     value={output}
                     readOnly
                 />
+                <button className={styles.bigButton} onClick={handleProcess}>Copy</button>
             </div>
         </div>
     );
